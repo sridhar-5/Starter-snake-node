@@ -19,7 +19,7 @@ function handleIndex(request, response) {
   var battlesnakeInfo = {
     apiversion: "1",
     author: "sridhar-5",
-    color: "#DFFF00",
+    color: "#8000ff",
     head: "beluga",
     tail: "curled",
   };
