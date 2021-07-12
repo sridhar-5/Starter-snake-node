@@ -18,7 +18,7 @@ app.listen(PORT, () =>
 function handleIndex(request, response) {
   var battlesnakeInfo = {
     apiversion: "1",
-    author: "Venkata Sridhar Sai",
+    author: "sridhar-5",
     color: "#DFFF00",
     head: "beluga",
     tail: "curled",
