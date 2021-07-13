@@ -1,7 +1,6 @@
 function GetSafeMoves(gameData, possibleMoves) {
   var SafeMoves = [];
   //this is the snake body
-  const MySnakeBodyObject = gameData["you"]["body"];
   //checker head details
   const SnakeHead = gameData["you"]["head"];
 
@@ -29,13 +28,16 @@ function GetSafeMoves(gameData, possibleMoves) {
 
 function getNextCoordinatesOfTheMove(SnakeHead, move) {
   var futureHeadOfSnake = Object.assign({}, SnakeHead);
-  if (move === "up") {
+  if (move == "up") {
     futureHeadOfSnake.y = SnakeHead.y + 1;
-  } else if (move === "down") {
+  }
+  if (move == "down") {
     futureHeadOfSnake.y = SnakeHead.y - 1;
-  } else if (move === "left") {
+  }
+  if (move == "left") {
     futureHeadOfSnake.x = SnakeHead.x - 1;
-  } else {
+  }
+  if (move == "right") {
     futureHeadOfSnake.x = SnakeHead.x + 1;
   }
   return futureHeadOfSnake;
@@ -50,6 +52,8 @@ function avoidHittingTheWalls(HeadCoordinates, height, width) {
     HeadCoordinates.y >= height
   ) {
     result = false;
+  } else {
+    result = true;
   }
 
   return result;

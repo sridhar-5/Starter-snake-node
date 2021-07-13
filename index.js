@@ -1,9 +1,6 @@
 const bodyParser = require("body-parser");
 const express = require("express");
-const {
-  getSafeMoves,
-  GetSafeMoves,
-} = require("./optimize-snake/Optimize-level-1");
+const { GetSafeMoves } = require("./optimize-snake/Optimize-level-1");
 
 const PORT = process.env.PORT || 3000;
 
@@ -46,13 +43,11 @@ function handleMove(request, response) {
   var SafeMoves = GetSafeMoves(gameData, possibleMoves);
 
   //if we get more than one safe mopve then we just select a move in random
-  if (SafeMoves.length > 0) {
-    var moveIndex = Math.floor(Math.random() * SafeMoves.length);
-    var move = SafeMoves[moveIndex];
+  if (SafeMoves) {
+    var move = SafeMoves[Math.floor(Math.random() * SafeMoves.length)];
   } else {
     //if no safe moves are availble then return any random move
-    moveIndex = Math.floor(Math.random() * possibleMoves.length);
-    move = possibleMoves[moveIndex];
+    move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
   }
 
   console.log("MOVE: " + move);
