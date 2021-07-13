@@ -40,7 +40,7 @@ function handleMove(request, response) {
 
   //safe moves is a list => getsafeMoves returns a list of safe moves
   var SafeMoves = GetSafeMoves(gameData, possibleMoves);
-
+  console.log(SafeMoves);
   //if we get more than one safe mopve then we just select a move in random
   if (SafeMoves) {
     var move = SafeMoves[Math.floor(Math.random() * SafeMoves.length)];
