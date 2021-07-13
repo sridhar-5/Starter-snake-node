@@ -5,7 +5,7 @@ function GetSafeMoves(gameData, possibleMoves) {
   //checker head details
   const SnakeHead = gameData["you"]["head"];
 
-  const getBoardDetails = MySnakeBodyObject["board"];
+  const getBoardDetails = gameData["board"];
   //wall of the snake is at x != 11 or y != 11
   // x !< 0 y !< 0
 
@@ -62,7 +62,7 @@ function avoidHittingTheOtherSnakes(HeadCoordinates, AllSnakeDetails) {
       result2 = false;
     }
   });
-  return result;
+  return result2;
 }
 
 module.exports = {
