@@ -36,7 +36,6 @@ function handleStart(request, response) {
 
 function handleMove(request, response) {
   var gameData = request.body;
-  console.log(gameData);
   var possibleMoves = ["up", "down", "left", "right"];
 
   //safe moves is a list => getsafeMoves returns a list of safe moves
