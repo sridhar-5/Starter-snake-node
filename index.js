@@ -49,6 +49,7 @@ function handleMove(request, response) {
     move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
   }
 
+  console.log(move);
   console.log("MOVE: " + move);
   response.status(200).send({
     move: move,

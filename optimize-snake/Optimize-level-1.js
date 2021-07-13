@@ -20,7 +20,7 @@ function GetSafeMoves(gameData, possibleMoves) {
       ) &&
       avoidHittingTheOtherSnakes(GetCoordinates, getBoardDetails["snakes"])
     ) {
-      SafeMoves.push(GetCoordinates);
+      SafeMoves.push(move);
     }
   });
   return SafeMoves;
