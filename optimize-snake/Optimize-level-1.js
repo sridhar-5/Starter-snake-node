@@ -1,6 +1,7 @@
 function GetSafeMoves(gameData, possibleMoves) {
   var SafeMoves = [];
   //this is the snake body
+  const OurSnakeBody = gameData["you"]["body"];
   //checker head details
   const SnakeHead = gameData["you"]["head"];
 
@@ -19,6 +20,12 @@ function GetSafeMoves(gameData, possibleMoves) {
         getBoardDetails["width"]
       ) &&
       avoidHittingTheOtherSnakes(GetCoordinates, getBoardDetails["snakes"])
+    ) {
+      SafeMoves.push(move);
+    } else if (
+      OurSnakeBody.length > 1 &&
+      GetCoordinates == OurSnakeBody[OurSnakeBody.length - 1] &&
+      !(GetCoordinates in OurSnakeBody.slice(0, OurSnakeBody.length - 2))
     ) {
       SafeMoves.push(move);
     }
