@@ -1,4 +1,7 @@
-const { AvoidHittingSelfBody } = require("./AvoidHittingSelfBody");
+const {
+  AvoidHittingSelfBody,
+  CheckSnakeHeadNotInBody,
+} = require("./AvoidHittingSelfBody");
 
 function GetSafeMoves(gameData, possibleMoves) {
   var SafeMoves = [];
@@ -14,6 +17,8 @@ function GetSafeMoves(gameData, possibleMoves) {
   // its a fact that head is what is leading the snake to any direction so head.x < 11 and head.y < 11 shoul;d d0
   possibleMoves.forEach((move) => {
     var GetCoordinates = getNextCoordinatesOfTheMove(SnakeHead, move);
+    var SnakeTail = OurSnakeBody[OurSnakeBody.length - 1];
+    var SnakeBodyExceptTail = OurSnakeBody.slice(0, OurSnakeBody.length - 2);
     //analyze the board and other snakes
     if (
       avoidHittingTheWalls(
@@ -25,6 +30,20 @@ function GetSafeMoves(gameData, possibleMoves) {
       AvoidHittingSelfBody(GetCoordinates, OurSnakeBody)
     ) {
       SafeMoves.push(move);
+    } else if (
+      OurSnakeBody.length > 1 &&
+      JSON.stringify(GetCoordinates) == JSON.stringify(SnakeTail) &&
+      CheckSnakeHeadNotInBody(GetCoordinates, SnakeBodyExceptTail)
+    ) {
+      console.log("called elseif boundary");
+      SafeMoves.push(move);
+      console.log(
+        "head.x, head.y, tail.x, tail.y",
+        GetCoordinates.x,
+        GetCoordinates.y,
+        SnakeTail.x,
+        SnakeTail.y
+      );
     }
   });
   return SafeMoves;

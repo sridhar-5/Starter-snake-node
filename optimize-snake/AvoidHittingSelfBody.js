@@ -11,6 +11,15 @@ function AvoidHittingSelfBody(nextMove, bodyObject) {
   return result;
 }
 
+function CheckSnakeHeadNotInBody(GetCoordinates, SnakeBodyExceptTail) {
+  SnakeBodyExceptTail.forEach((bodyCoordinate) => {
+    if (JSON.stringify(bodyCoordinate) == JSON.stringify(GetCoordinates)) {
+      return false;
+    }
+  });
+  return true;
+}
 module.exports = {
   AvoidHittingSelfBody,
+  CheckSnakeHeadNotInBody,
 };
