@@ -1,3 +1,5 @@
+const { AvoidHittingSelfBody } = require("./AvoidHittingSelfBody");
+
 function GetSafeMoves(gameData, possibleMoves) {
   var SafeMoves = [];
   //this is the snake body
@@ -19,13 +21,8 @@ function GetSafeMoves(gameData, possibleMoves) {
         getBoardDetails["height"],
         getBoardDetails["width"]
       ) &&
-      avoidHittingTheOtherSnakes(GetCoordinates, getBoardDetails["snakes"])
-    ) {
-      SafeMoves.push(move);
-    } else if (
-      OurSnakeBody.length > 1 &&
-      GetCoordinates == OurSnakeBody[OurSnakeBody.length - 1] &&
-      !(GetCoordinates in OurSnakeBody.slice(0, OurSnakeBody.length - 2))
+      avoidHittingTheOtherSnakes(GetCoordinates, getBoardDetails["snakes"]) &&
+      AvoidHittingSelfBody(GetCoordinates, OurSnakeBody)
     ) {
       SafeMoves.push(move);
     }

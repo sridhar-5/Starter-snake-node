@@ -21,8 +21,8 @@ function handleIndex(request, response) {
     apiversion: "1",
     author: "sridhar-5",
     color: "#8000ff",
-    head: "beluga",
-    tail: "curled",
+    head: "bendr",
+    tail: "bolt",
   };
   response.status(200).json(battlesnakeInfo);
 }
